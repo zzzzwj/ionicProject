@@ -4,11 +4,20 @@
             <i class="icon ion-compose"></i>
         </button>
     </ion-nav-buttons>
+    <ion-nav-buttons side="left">
+        <button class="button button-white" ng-click="clearTasks()">Clear tasks</button>
+    </ion-nav-buttons>
     <ion-content>
         <!-- our list and list items -->
-        <ion-list>
-            <ion-item ng-repeat="task in tasks">
+        <ion-list ng-controller="TasksController"
+                  show-delete="false"
+                  show-reorder="false"
+                  can-swipe="true">
+            <!--ion-item ng-repeat="task in tasks track by $index"-->
+            <ion-item ng-repeat="task in tasks track by $index" ng-class="{true:'done',false:''}[task.checked]">
                 {{task.title}}
+              <!--input type="checkbox" ng-module="task.checked"-->
+              <ion-option-button class="button-positive" ng-click="completeTask(task,$index)" >complete</ion-option-button>
             </ion-item>
         </ion-list>
     </ion-content>

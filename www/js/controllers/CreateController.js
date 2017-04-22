@@ -3,5 +3,6 @@ angular.module('starter.controllers')
   $scope.createTask = function(task) {
     Tasks.save(task);
     $state.go("tasks");
+    //console.log(task);
   };
 });
